@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-configmap-env
+  name: nginx-configmap-env
+spec:
+  containers:
+  - image: nginx
+    name: nginx-configmap-env
+    env:
+      - name: giropops
+        valueFrom:
+          configMapKeyRef:
+            name: game-demo
+            key: giropops

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-afinity-node
+  name: nginx-afinity-node
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: nginx-afinity-node
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nginx-afinity-node
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+      nodeSelector:
+        DC: MT
+status: {}

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: limit-pod
+spec:
+  containers:
+    - name: meu-container
+      image: nginx

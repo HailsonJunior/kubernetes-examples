@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-empty-vol
+  name: nginx-empty-vol
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-empty-vol
+  template:
+    metadata:
+      labels:
+        app: nginx-empty-vol
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        volumeMounts:
+        - mountPath: /giropops
+          name: giropops
+      volumes:
+      - name: giropops
+        emptyDir: {}

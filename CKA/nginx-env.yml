@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-env
+  name: nginx-env
+spec:
+  containers:
+  - image: nginx
+    name: nginx-env
+    env:
+    - name: NGINX_PORT
+      value: "80"

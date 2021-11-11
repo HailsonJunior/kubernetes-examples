@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  containers:
+  - image: busybox
+    name: busy
+    command:
+      - sleep
+      - "3600"
+    volumeMounts:
+      - mountPath: /giropops
+        name: giropops-dir
+  volumes:
+    - name: giropops-dir
+      emptyDir: {}

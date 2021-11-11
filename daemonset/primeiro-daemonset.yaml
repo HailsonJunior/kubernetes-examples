@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemon-set-primeiro
+spec:
+  selector:
+    matchLabels:
+      system: Strigus
+  template:
+    metadata:
+      labels:
+        system: Strigus
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.7.9
+          ports:
+            - containerPort: 80
+  updateStrategy:
+    type: RollingUpdate

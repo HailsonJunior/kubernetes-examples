@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-no-persistent
+  name: nginx-no-persistent
+spec:
+  containers:
+  - image: nginx
+    name: nginx-no-persistent
+    volumeMounts:
+      - mountPath: /giropops
+        name: giropops
+  volumes:
+    - name: giropops
+      emptyDir: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    run: nginx-no-persistent
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
